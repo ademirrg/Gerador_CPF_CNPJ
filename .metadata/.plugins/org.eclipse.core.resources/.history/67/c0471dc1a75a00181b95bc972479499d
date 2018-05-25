@@ -1,0 +1,67 @@
+package br.com.koin;
+
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Botao {
+	JButton bt_lojista_hmg;
+	JButton bt_comprador_hmg;
+	JButton bt_aquarius_hmg;
+	JButton bt_conductor_hmg;
+	JButton bt_todos;
+	JButton bt_sair;
+	
+	int comptoBt = 130;//Comprimento do botão
+	int posH = 20;//Posição horizontal do botão
+	int altBt = 30;//Altura do botão
+	Color corBt = Color.LIGHT_GRAY;//Cor do botão
+
+	public void definirBotoesTelaPrincipal(ActionListener tela, JFrame frame) {
+		bt_lojista_hmg = new JButton("Lojista HMG");
+		bt_lojista_hmg.setBounds(posH, 40, comptoBt, altBt);
+		bt_lojista_hmg.addActionListener(tela);
+		bt_lojista_hmg.setActionCommand("command_lojista_hmg");
+		bt_lojista_hmg.setBackground(corBt);
+		
+		bt_comprador_hmg = new JButton("Comprador HMG");
+		bt_comprador_hmg.setBounds(posH, 80, comptoBt, altBt);
+		bt_comprador_hmg.addActionListener(tela);
+		bt_comprador_hmg.setActionCommand("command_comprador_hmg");
+		bt_comprador_hmg.setBackground(corBt);
+		
+		bt_aquarius_hmg = new JButton("Aquarius HMG");
+		bt_aquarius_hmg.setBounds(posH, 120, comptoBt, altBt);
+		bt_aquarius_hmg.addActionListener(tela);
+		bt_aquarius_hmg.setActionCommand("command_aquarius_hmg");
+		bt_aquarius_hmg.setBackground(corBt);
+		
+		bt_conductor_hmg = new JButton("Conductor HMG");
+		bt_conductor_hmg.setBounds(posH, 160, comptoBt, altBt);
+		bt_conductor_hmg.addActionListener(tela);
+		bt_conductor_hmg.setActionCommand("command_conductor_hmg");
+		bt_conductor_hmg.setBackground(corBt);
+		
+		bt_todos = new JButton("Todos");
+		bt_todos.setBounds(posH, 200, comptoBt, altBt);
+		bt_todos.addActionListener(tela);
+		bt_todos.setActionCommand("command_todos");
+		bt_todos.setBackground(corBt);
+		
+		bt_sair = new JButton("Sair");
+		bt_sair.setBounds(500, 200, 75, altBt);
+		bt_sair.addActionListener(tela);
+		bt_sair.setActionCommand("command_sair");
+		bt_sair.setMnemonic(KeyEvent.VK_Q);
+		bt_sair.setBackground(corBt);
+		
+		frame.add(bt_lojista_hmg);
+		frame.add(bt_comprador_hmg);
+		frame.add(bt_aquarius_hmg);
+		frame.add(bt_conductor_hmg);
+		frame.add(bt_todos);
+		frame.add(bt_sair);
+	}
+}

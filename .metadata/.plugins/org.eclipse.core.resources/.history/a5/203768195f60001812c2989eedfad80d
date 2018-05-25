@@ -1,0 +1,81 @@
+package br.com.koin;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.net.URL;
+import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
+
+public class Tela extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	Botao botoes = new Botao();
+	JTextField campo = new JTextField();
+	
+	
+	public void criaTela() {
+		
+//		try {
+		//Imagens
+		URL iconKoin = Main.class.getResource("/icon.jpg");
+		URL imgKoin = Main.class.getResource("/koin_small.jpg");
+		
+		// Tela
+		setTitle("GERADOR DE CPF/CNPJ");
+		setSize(600, 195);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		getContentPane().setBackground(Color.WHITE);
+		setLayout(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		ImageIcon icone = new ImageIcon(iconKoin);
+		setIconImage(icone.getImage());
+		
+		JLabel textoPagina_inicial = new JLabel("SELECIONE UMA OPÇÃO PARA GERAÇÃO");
+		textoPagina_inicial.setBounds(20,10,350,30);
+		textoPagina_inicial.setForeground(Color.DARK_GRAY);
+		
+		JLabel imgFundo = new JLabel();
+		imgFundo.setIcon(new ImageIcon(imgKoin));
+		imgFundo.setBounds(260,5,350,80);
+		
+		campo.setBounds(20,60,180,30);
+		campo.setEditable(false);
+		
+		getContentPane().add(textoPagina_inicial);
+		getContentPane().add(imgFundo).setVisible(true);
+		getContentPane().add(campo);
+	}
+
+	public void criaBotoes() {
+		botoes.definirBotoesTelaPrincipal(this, this);
+	}
+	
+	public void geraCPF() {
+		campo.setText("");
+		String cpf = GeradorCPFCNPJ.geraCPF();
+		campo = new JTextField(cpf);
+		campo.setBounds(20,60,180,30);
+		campo.setEditable(false);	
+		getContentPane().add(campo);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		switch (e.getActionCommand()) {
+		
+		case "command_sair":
+			System.exit(0);
+			break;
+		case "command_gera_cpf":
+			geraCPF();
+			break;
+		case "command_altera_parcelas":
+
+			break;
+		case "command_compra_recusada":
+
+			break;
+		}
+	}
+}

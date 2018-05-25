@@ -1,5 +1,7 @@
 package br.com.koin;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -60,6 +62,13 @@ public class Tela extends JFrame implements ActionListener {
 		String cnpj = GeradorCPFCNPJ.geraCNPJ();
 		campo.setText(cnpj);
 	}
+	
+	public void copiar() {
+		String copia = campo.getText();
+		StringSelection selecao = new StringSelection(copia);
+		Clipboard areaTransfer = Toolkit.getDefaultToolkit().getSystemClipboard();
+		areaTransfer.setContents(selecao, null);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -73,6 +82,9 @@ public class Tela extends JFrame implements ActionListener {
 			break;
 		case "command_gera_cnpj":
 			geraCNPJ();
+			break;
+		case "command_copiar":
+			copiar();
 			break;
 		}
 	}

@@ -10,6 +10,7 @@ public class Botao {
 	JButton bt_sair;
 	JButton bt_cpf;
 	JButton bt_cnpj;
+	JButton bt_copiar;
 	
 	int comptoBt = 75;//Comprimento do botão
 	int posH = 20;//Posição horizontal do botão
@@ -29,6 +30,12 @@ public class Botao {
 		bt_cnpj.setActionCommand("command_gera_cnpj");
 		bt_cnpj.setBackground(corBt);
 		
+		bt_copiar = new JButton("Copiar");
+		bt_copiar.setBounds(210, 120, comptoBt, altBt);
+		bt_copiar.addActionListener(tela);
+		bt_copiar.setActionCommand("command_copiar");
+		bt_copiar.setBackground(corBt);
+		
 		bt_sair = new JButton("Sair");
 		bt_sair.setBounds(500, 120, comptoBt, altBt);
 		bt_sair.addActionListener(tela);
@@ -39,5 +46,6 @@ public class Botao {
 		frame.add(bt_sair);
 		frame.add(bt_cpf);
 		frame.add(bt_cnpj);
+		frame.add(bt_copiar);
 	}
 }

@@ -34,7 +34,7 @@ public class Tela extends JFrame implements ActionListener {
 		ImageIcon icone = new ImageIcon(iconKoin);
 		setIconImage(icone.getImage());
 		
-		JLabel textoPagina_inicial = new JLabel("ESCOLHA UMA OP플O PARA GERA플O");
+		JLabel textoPagina_inicial = new JLabel("SELECIONE UMA OP플O PARA GERA플O");
 		textoPagina_inicial.setBounds(20,10,350,30);
 		textoPagina_inicial.setForeground(Color.DARK_GRAY);
 		

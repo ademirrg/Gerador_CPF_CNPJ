@@ -5,26 +5,27 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+
 import java.net.URL;
+import java.text.ParseException;
+
 import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 
 public class Tela extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	Botao botoes = new Botao();
-	JTextField campo = new JTextField();
-	
-	
+	JFormattedTextField campo = new JFormattedTextField();
+		
 	public void criaTela() {
 		
-//		try {
 		//Imagens
 		URL iconKoin = Main.class.getResource("/icon.jpg");
-		URL imgKoin = Main.class.getResource("/koin_small.jpg");
 		
 		// Tela
 		setTitle("GERADOR DE CPF/CNPJ");
-		setSize(600, 195);
+		setSize(300, 210);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		getContentPane().setBackground(Color.WHITE);
@@ -38,10 +39,10 @@ public class Tela extends JFrame implements ActionListener {
 		textoPagina_inicial.setForeground(Color.DARK_GRAY);
 		
 		JLabel imgFundo = new JLabel();
-		imgFundo.setIcon(new ImageIcon(imgKoin));
-		imgFundo.setBounds(260,5,350,80);
+		imgFundo.setIcon(new ImageIcon(iconKoin));
+		imgFundo.setBounds(190,70,100,80);
 		
-		campo.setBounds(20,60,170,30);
+		campo.setBounds(20,60,160,30);
 		campo.setEditable(false);
 		
 		getContentPane().add(textoPagina_inicial);
@@ -54,17 +55,40 @@ public class Tela extends JFrame implements ActionListener {
 	}
 	
 	public void geraCPF() {
-		String cpf = GeradorCPFCNPJ.geraCPF();
-		campo.setText(cpf);
+		try {
+			String cpf = GeradorCPFCNPJ.geraCPF();
+			MaskFormatter cpfMask;
+			cpfMask = new MaskFormatter("###.###.###-##");
+			cpfMask.setValidCharacters("0123456789");
+			cpfMask.uninstall();
+			cpfMask.install(campo);
+			campo.setText(cpf);
+			cpfMask.uninstall();
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void geraCNPJ() {
-		String cnpj = GeradorCPFCNPJ.geraCNPJ();
-		campo.setText(cnpj);
+		try {
+			String cnpj = GeradorCPFCNPJ.geraCNPJ();
+			MaskFormatter cnpjMask;
+			cnpjMask = new MaskFormatter("##.###.###/####-##");
+			cnpjMask.setValidCharacters("0123456789");
+			cnpjMask.uninstall();
+			cnpjMask.install(campo);
+			campo.setText(cnpj);
+			cnpjMask.uninstall();
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void copiar() {
 		String copia = campo.getText();
+		copia = copia.replaceAll("[-./]", "");
 		StringSelection selecao = new StringSelection(copia);
 		Clipboard areaTransfer = Toolkit.getDefaultToolkit().getSystemClipboard();
 		areaTransfer.setContents(selecao, null);

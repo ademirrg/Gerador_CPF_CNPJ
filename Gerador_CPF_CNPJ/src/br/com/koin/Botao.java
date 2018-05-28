@@ -19,25 +19,25 @@ public class Botao {
 
 	public void definirBotoesTelaPrincipal(ActionListener tela, JFrame frame) {
 		bt_cpf = new JButton("CPF");
-		bt_cpf.setBounds(posH, 120, comptoBt, altBt);
+		bt_cpf.setBounds(posH, 100, comptoBt, altBt);
 		bt_cpf.addActionListener(tela);
 		bt_cpf.setActionCommand("command_gera_cpf");
 		bt_cpf.setBackground(corBt);
 		
 		bt_cnpj = new JButton("CNPJ");
-		bt_cnpj.setBounds(115, 120, comptoBt, altBt);
+		bt_cnpj.setBounds(105, 100, comptoBt, altBt);
 		bt_cnpj.addActionListener(tela);
 		bt_cnpj.setActionCommand("command_gera_cnpj");
 		bt_cnpj.setBackground(corBt);
 		
 		bt_copiar = new JButton("Copiar");
-		bt_copiar.setBounds(210, 120, comptoBt, altBt);
+		bt_copiar.setBounds(posH, 140, comptoBt, altBt);
 		bt_copiar.addActionListener(tela);
 		bt_copiar.setActionCommand("command_copiar");
 		bt_copiar.setBackground(corBt);
 		
 		bt_sair = new JButton("Sair");
-		bt_sair.setBounds(500, 120, comptoBt, altBt);
+		bt_sair.setBounds(105, 140, comptoBt, altBt);
 		bt_sair.addActionListener(tela);
 		bt_sair.setActionCommand("command_sair");
 		bt_sair.setMnemonic(KeyEvent.VK_Q);

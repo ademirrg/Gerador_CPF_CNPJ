@@ -4,6 +4,9 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 
@@ -44,6 +47,13 @@ public class Tela extends JFrame implements ActionListener {
 		
 		campo.setBounds(20,60,160,30);
 		campo.setEditable(false);
+		campo.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					botoes.bt_sair.doClick();
+				}
+			}
+		});
 		
 		getContentPane().add(textoPagina_inicial);
 		getContentPane().add(imgFundo).setVisible(true);

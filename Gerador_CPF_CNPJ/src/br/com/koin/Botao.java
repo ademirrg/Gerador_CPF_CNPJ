@@ -2,6 +2,7 @@ package br.com.koin;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,25 +24,52 @@ public class Botao {
 		bt_cpf.addActionListener(tela);
 		bt_cpf.setActionCommand("command_gera_cpf");
 		bt_cpf.setBackground(corBt);
+		bt_cpf.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					bt_sair.doClick();
+				}
+			}
+		});
 		
 		bt_cnpj = new JButton("CNPJ");
 		bt_cnpj.setBounds(105, 100, comptoBt, altBt);
 		bt_cnpj.addActionListener(tela);
 		bt_cnpj.setActionCommand("command_gera_cnpj");
 		bt_cnpj.setBackground(corBt);
+		bt_cnpj.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					bt_sair.doClick();
+				}
+			}
+		});
 		
 		bt_copiar = new JButton("Copiar");
 		bt_copiar.setBounds(posH, 140, comptoBt, altBt);
 		bt_copiar.addActionListener(tela);
 		bt_copiar.setActionCommand("command_copiar");
 		bt_copiar.setBackground(corBt);
+		bt_copiar.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					bt_sair.doClick();
+				}
+			}
+		});
 		
 		bt_sair = new JButton("Sair");
 		bt_sair.setBounds(105, 140, comptoBt, altBt);
 		bt_sair.addActionListener(tela);
 		bt_sair.setActionCommand("command_sair");
-		bt_sair.setMnemonic(KeyEvent.VK_Q);
 		bt_sair.setBackground(corBt);
+		bt_sair.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					bt_sair.doClick();
+				}
+			}
+		});
 		
 		frame.add(bt_sair);
 		frame.add(bt_cpf);
